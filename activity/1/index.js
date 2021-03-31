@@ -1,6 +1,8 @@
 const puppeteer = require('puppeteer');
 const data = require("./config.json");
+
 let noOfPosts = process.argv[2];
+
 (async () => {
     const browser = await puppeteer.launch({ headless: false });
     const page = await browser.newPage();
@@ -12,7 +14,7 @@ let noOfPosts = process.argv[2];
         await page.click("button[type='submit']")
     ]);
 
-    await page.type("input[placeholder='Search']", "aanchal.149",{delay: 100});
+    await page.type("input[placeholder='Search']", "pepcoding",{delay: 100});
     await page.waitForSelector(".drKGC .fuqBx a",{visible: true});
     await Promise.all([
         page.waitForNavigation({ waitUntil: "networkidle2" }),
@@ -33,6 +35,7 @@ let noOfPosts = process.argv[2];
             page.waitForNavigation({ waitUntil: "networkidle2" }),
             await page.click(".DdSX2 ._65Bje.coreSpriteRightPaginationArrow")
         ]);
+        i++;
     }while(i<noOfPosts);
 
 })();
