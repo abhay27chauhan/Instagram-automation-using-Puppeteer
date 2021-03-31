@@ -58,4 +58,5 @@ browseropenP
  * https://flaviocopes.com/puppeteer/
  * https://nitayneeman.com/posts/getting-to-know-puppeteer-using-practical-examples/
  * https://peter.sh/experiments/chromium-command-line-switches/
+ * https://github.com/octalmage/robotjs#building
  */
