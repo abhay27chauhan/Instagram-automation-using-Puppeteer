@@ -58,6 +58,11 @@ browserOpenPromise
     })
     .then(function (linksArr) {
         let questionSolverPromise = questionSolver(linksArr[0], 0);
+        for(let i=1; i<linksArr.length; i++){
+            questionSolverPromise = questionSolverPromise.then(() => {
+                return questionSolver(linksArr[i], i);
+            })
+        }
         return questionSolverPromise;
     })
     .then(function(){
@@ -92,7 +97,7 @@ function questionSolver(qLink, i){
 
         goToQuestionPagePromise
             .then(function(){
-                let checkboxPromise = waitAndClick(".custom-input-checkbox")
+                let checkboxPromise = waitAndClick(".checkbox-input")
                 return checkboxPromise;
             })
             .then(function(){
@@ -127,8 +132,12 @@ function questionSolver(qLink, i){
                 let codePastePromise = cTab.keyboard.press("v");
                 return codePastePromise;
             })
+            .then(function(){
+                let downCntrlPromise = cTab.keyboard.up("Control");
+                return downCntrlPromise;
+            })
             .then(function () {
-                let submitWillClickedPromise = cTab.click(".pull-right.btn.btn-primary.hr-monaco-submit");
+                let submitWillClickedPromise = cTab.click(".hr-monaco-submit");
                 return submitWillClickedPromise;
             })
             .then(function(){
