@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/abhay27chauhan/automation-using-Puppeteer#readme",
   "dependencies": {
+    "pdfkit": "^0.12.1",
     "puppeteer": "^8.0.0"
   }
 }
